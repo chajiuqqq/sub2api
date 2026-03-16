@@ -200,7 +200,9 @@ func normalizeCodexModel(model string) string {
 		return "gpt-5.1"
 	}
 
-	return "gpt-5.1"
+	// Preserve unknown/custom model IDs so API-compatible upstreams behind
+	// a custom base_url can receive the exact caller-specified model name.
+	return ""
 }
 
 func getNormalizedCodexModel(modelID string) string {

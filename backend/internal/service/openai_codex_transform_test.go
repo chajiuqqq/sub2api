@@ -185,6 +185,11 @@ func TestNormalizeCodexModel_Gpt53(t *testing.T) {
 	}
 }
 
+func TestNormalizeCodexModel_PreservesUnknownCustomModel(t *testing.T) {
+	require.Equal(t, "", normalizeCodexModel("my-custom-upstream-model"))
+	require.Equal(t, "", normalizeCodexModel("vendor/foo-bar-001"))
+}
+
 func TestApplyCodexOAuthTransform_CodexCLI_PreservesExistingInstructions(t *testing.T) {
 	// Codex CLI 场景：已有 instructions 时不修改
 
